@@ -26,6 +26,8 @@ import androidx.compose.ui.unit.dp
 import com.example.ejercicio.R
 import com.example.ejercicio.model.preguntas
 import com.example.ejercicio.ui.componentes.BotonNext
+import com.example.ejercicio.ui.componentes.BotonPrev
+import com.example.ejercicio.ui.componentes.BotonRandom
 import com.example.ejercicio.ui.componentes.BotonRespuesta
 import com.example.ejercicio.ui.componentes.MensajeResultado
 import com.example.ejercicio.ui.theme.Dimens
@@ -95,6 +97,20 @@ fun PantallaPreguntas( innerPadding : PaddingValues) {
                     }
                 }
             )
+        }
+        Row(horizontalArrangement = Arrangement.spacedBy(Dimens.espacioPequeno)) {
+            BotonPrev(eventoPadre = {
+                if (indice == 0) {
+                    indice = preguntas.size - 1
+                } else {
+                    indice--
+                }
+                textoUsuario = ""
+            })
+            BotonRandom(eventoPadre = {
+                indice = (0..preguntas.size - 1).random()
+                textoUsuario = ""
+            })
         }
         BotonNext(eventoPadre = {
             if (indice == preguntas.size - 1) {
