@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Ejercicio</string>
+
+    <string name="boton_true">true</string>
+    <string name="boton_false">false</string>
+    <string name="boton_next">next</string>
+
+    <string name="mensaje_acierto">Que buena pa, acertaste. Era %1$s</string>
+    <string name="mensaje_fallo">Eres tonto? Elegiste %1$s, pero la respuesta correcta era %2$s</string>
+</resources>
