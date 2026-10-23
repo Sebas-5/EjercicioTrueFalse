@@ -1,5 +1,7 @@
 package com.example.ejercicio.ui.pantallas
 
+import android.content.Context
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,6 +20,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -35,13 +38,30 @@ import com.example.ejercicio.ui.theme.RojoMalo
 import com.example.ejercicio.ui.theme.VerdeAcierto
 
 @Composable
-fun PantallaPreguntas( innerPadding : PaddingValues) {
+fun PantallaPreguntas(innerPadding: PaddingValues, eventoVolver: () -> Unit) {
     var indice by remember { mutableStateOf(0) }
     val textoFallo = stringResource(R.string.mensaje_fallo, (!preguntas[indice].respuesta).toString(), preguntas[indice].respuesta.toString())
     val textoAcierto = stringResource(R.string.mensaje_acierto, preguntas[indice].respuesta.toString())
     var textoUsuario by remember { mutableStateOf<String>("") }
 
-    // Mientras no haya mensaje, los botones tienen su color normal
+    val context = LocalContext.current
+    val preferencias = context.getSharedPreferences(stringResource(R.string.preferencias_nombre), Context.MODE_PRIVATE)
+    val claveAciertos = stringResource(R.string.clave_aciertos)
+    val claveFallos = stringResource(R.string.clave_fallos)
+    val claveClicks = stringResource(R.string.clave_clicks)
+    var aciertos by remember { mutableStateOf(preferencias.getInt(claveAciertos, 0)) }
+    var fallos by remember { mutableStateOf(preferencias.getInt(claveFallos, 0)) }
+    var clicks by remember { mutableStateOf(preferencias.getInt(claveClicks, 0)) }
+
+    BackHandler {
+        preferencias.edit()
+            .putInt(claveAciertos, aciertos)
+            .putInt(claveFallos, fallos)
+            .putInt(claveClicks, clicks)
+            .apply()
+        eventoVolver()
+    }
+
     val colorNormal = ButtonDefaults.buttonColors().containerColor
     val colorTrue = if (textoUsuario == "") colorNormal else if (preguntas[indice].respuesta) VerdeAcierto else RojoMalo
     val colorFalse = if (textoUsuario == "") colorNormal else if (!preguntas[indice].respuesta) VerdeAcierto else RojoMalo
@@ -79,9 +99,12 @@ fun PantallaPreguntas( innerPadding : PaddingValues) {
                 texto = stringResource(R.string.boton_true),
                 color = colorTrue,
                 eventoPadre = {
+                    clicks++
                     if (preguntas[indice].respuesta) {
+                        aciertos++
                         textoUsuario = textoAcierto
                     } else {
+                        fallos++
                         textoUsuario = textoFallo
                     }
                 }
@@ -90,9 +113,12 @@ fun PantallaPreguntas( innerPadding : PaddingValues) {
                 texto = stringResource(R.string.boton_false),
                 color = colorFalse,
                 eventoPadre = {
+                    clicks++
                     if (!preguntas[indice].respuesta) {
+                        aciertos++
                         textoUsuario = textoAcierto
                     } else {
+                        fallos++
                         textoUsuario = textoFallo
                     }
                 }
@@ -100,6 +126,7 @@ fun PantallaPreguntas( innerPadding : PaddingValues) {
         }
         Row(horizontalArrangement = Arrangement.spacedBy(Dimens.espacioPequeno)) {
             BotonPrev(eventoPadre = {
+                clicks++
                 if (indice == 0) {
                     indice = preguntas.size - 1
                 } else {
@@ -108,11 +135,13 @@ fun PantallaPreguntas( innerPadding : PaddingValues) {
                 textoUsuario = ""
             })
             BotonRandom(eventoPadre = {
+                clicks++
                 indice = (0..preguntas.size - 1).random()
                 textoUsuario = ""
             })
         }
         BotonNext(eventoPadre = {
+            clicks++
             if (indice == preguntas.size - 1) {
                 indice = 0
             } else {
@@ -126,5 +155,5 @@ fun PantallaPreguntas( innerPadding : PaddingValues) {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun PreviewPantallaPreguntas() {
-    PantallaPreguntas(PaddingValues(0.dp))
+    PantallaPreguntas(PaddingValues(0.dp), {})
 }

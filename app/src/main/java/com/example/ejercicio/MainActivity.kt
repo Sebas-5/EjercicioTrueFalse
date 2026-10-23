@@ -7,7 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import com.example.ejercicio.ui.pantallas.PantallaPreguntas
+import com.example.ejercicio.navigation.Navegacion
 import com.example.ejercicio.ui.theme.EjercicioTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             EjercicioTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    PantallaPreguntas(innerPadding)
+                    Navegacion(innerPadding)
                 }
             }
         }
