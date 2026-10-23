@@ -5,4 +5,5 @@ import androidx.compose.ui.unit.dp
 object Dimens {
     val paddingPantalla = 16.dp
     val espacioPequeno = 8.dp
+    val alturaImagen = 200.dp
 }
