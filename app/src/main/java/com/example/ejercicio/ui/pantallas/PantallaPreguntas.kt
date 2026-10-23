@@ -30,9 +30,9 @@ import com.example.ejercicio.ui.theme.VerdeAcierto
 
 @Composable
 fun PantallaPreguntas( innerPadding : PaddingValues) {
-    val textoFallo = stringResource(R.string.mensaje_fallo,"falso")
-    val textoAcierto = stringResource(R.string.mensaje_acierto,"verdadero")
     var indice by remember { mutableStateOf(0) }
+    val textoFallo = stringResource(R.string.mensaje_fallo, (!preguntas[indice].respuesta).toString(), preguntas[indice].respuesta.toString())
+    val textoAcierto = stringResource(R.string.mensaje_acierto, preguntas[indice].respuesta.toString())
     var textoUsuario by remember { mutableStateOf<String>("") }
 
 
@@ -57,7 +57,7 @@ fun PantallaPreguntas( innerPadding : PaddingValues) {
                 if (preguntas[indice].respuesta){
                     textoUsuario = textoAcierto
                 } else {
-
+                    textoUsuario = textoFallo
                 }
 
             }, colors = ButtonColors(
@@ -72,6 +72,8 @@ fun PantallaPreguntas( innerPadding : PaddingValues) {
 
                 if(!preguntas[indice].respuesta){
                     textoUsuario = textoAcierto
+                } else {
+                    textoUsuario = textoFallo
                 }
             }, colors = ButtonColors(
                 containerColor = RojoMalo,
