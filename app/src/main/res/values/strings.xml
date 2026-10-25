@@ -1,10 +1,28 @@
 <resources>
     <string name="app_name">Ejercicio</string>
 
-    <string name="boton_true">true</string>
-    <string name="boton_false">false</string>
-    <string name="boton_next">next</string>
+    <string name="boton_true">TRUE</string>
+    <string name="boton_false">FALSE</string>
+    <string name="boton_next">NEXT</string>
+    <string name="boton_prev">PREV</string>
+    <string name="boton_random">RANDOM</string>
 
     <string name="mensaje_acierto">Que buena pa, acertaste. Era %1$s</string>
     <string name="mensaje_fallo">Eres tonto? Elegiste %1$s, pero la respuesta correcta era %2$s</string>
+
+    <string name="preferencias_nombre">estadisticas</string>
+    <string name="clave_aciertos">aciertos</string>
+    <string name="clave_fallos">fallos</string>
+    <string name="clave_clicks">clicks</string>
+
+    <string name="menu_titulo">Preguntas verdadero o falso</string>
+    <string name="boton_jugar">JUGAR</string>
+    <string name="boton_estadisticas">ESTADÍSTICAS</string>
+
+    <string name="estadisticas_titulo">Estadísticas</string>
+    <string name="estadisticas_aciertos">Aciertos: %1$d</string>
+    <string name="estadisticas_fallos">Fallos: %1$d</string>
+    <string name="estadisticas_porcentaje_aciertos">Porcentaje de aciertos: %1$d%%</string>
+    <string name="estadisticas_porcentaje_fallos">Porcentaje de fallos: %1$d%%</string>
+    <string name="estadisticas_clicks">Clicks totales: %1$d</string>
 </resources>

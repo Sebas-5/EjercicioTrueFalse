@@ -5,13 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.ejercicio.ui.pantallas.PantallaPreguntas
+import com.example.ejercicio.navigation.Navegacion
 import com.example.ejercicio.ui.theme.EjercicioTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,25 +17,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             EjercicioTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    PantallaPreguntas(innerPadding)
+                    Navegacion(innerPadding)
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    EjercicioTheme {
-        Greeting("Android")
     }
 }
