@@ -10,4 +10,10 @@ data object Menu : NavKey
 data object Juego : NavKey
 
 @Serializable
+data object Examen : NavKey
+
+@Serializable
+data object Simple : NavKey
+
+@Serializable
 data object Estadisticas : NavKey

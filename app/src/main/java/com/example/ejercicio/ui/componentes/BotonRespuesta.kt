@@ -8,14 +8,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 @Composable
-fun BotonRespuesta(texto: String, color: Color, eventoPadre: () -> Unit) {
+fun BotonRespuesta(texto: String, color: Color, activo: Boolean, eventoPadre: () -> Unit) {
     Button(onClick = {
         eventoPadre()
-    }, colors = ButtonColors(
+    }, enabled = activo, colors = ButtonColors(
         containerColor = color,
         contentColor = ButtonDefaults.buttonColors().contentColor,
-        disabledContainerColor = ButtonDefaults.buttonColors().disabledContainerColor,
-        disabledContentColor = ButtonDefaults.buttonColors().disabledContentColor
+        disabledContainerColor = color,
+        disabledContentColor = ButtonDefaults.buttonColors().contentColor
     )) {
         Text(texto)
     }

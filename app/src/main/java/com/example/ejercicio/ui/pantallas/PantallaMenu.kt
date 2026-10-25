@@ -19,7 +19,13 @@ import com.example.ejercicio.ui.componentes.BotonMenu
 import com.example.ejercicio.ui.theme.Dimens
 
 @Composable
-fun PantallaMenu(innerPadding: PaddingValues, eventoJugar: () -> Unit, eventoEstadisticas: () -> Unit) {
+fun PantallaMenu(
+    innerPadding: PaddingValues,
+    eventoJugar: () -> Unit,
+    eventoExamen: () -> Unit,
+    eventoSimple: () -> Unit,
+    eventoEstadisticas: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -38,6 +44,14 @@ fun PantallaMenu(innerPadding: PaddingValues, eventoJugar: () -> Unit, eventoEst
             eventoPadre = eventoJugar
         )
         BotonMenu(
+            texto = stringResource(R.string.boton_examen),
+            eventoPadre = eventoExamen
+        )
+        BotonMenu(
+            texto = stringResource(R.string.boton_simple),
+            eventoPadre = eventoSimple
+        )
+        BotonMenu(
             texto = stringResource(R.string.boton_estadisticas),
             eventoPadre = eventoEstadisticas
         )
@@ -47,5 +61,5 @@ fun PantallaMenu(innerPadding: PaddingValues, eventoJugar: () -> Unit, eventoEst
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun PreviewPantallaMenu() {
-    PantallaMenu(PaddingValues(0.dp), {}, {})
+    PantallaMenu(PaddingValues(0.dp), {}, {}, {}, {})
 }

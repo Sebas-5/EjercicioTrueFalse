@@ -18,6 +18,15 @@
     <string name="menu_titulo">Preguntas verdadero o falso</string>
     <string name="boton_jugar">JUGAR</string>
     <string name="boton_estadisticas">ESTADÍSTICAS</string>
+    <string name="boton_examen">MODO EXAMEN</string>
+    <string name="boton_simple">MODO SIMPLE</string>
+    <string name="boton_menu">MENÚ</string>
+    <string name="boton_repetir">REPETIR</string>
+
+    <string name="examen_titulo">Resultado del examen</string>
+    <string name="examen_motivador">¡Perfecto! Has acertado %1$d de %2$d. ¡Eres un crack!</string>
+    <string name="examen_normal">Has acertado %1$d de %2$d. Aprobado, pero puedes hacerlo mejor.</string>
+    <string name="examen_insulto">Has acertado %1$d de %2$d. Eres un desastre, vuelve a estudiar.</string>
 
     <string name="estadisticas_titulo">Estadísticas</string>
     <string name="estadisticas_aciertos">Aciertos: %1$d</string>

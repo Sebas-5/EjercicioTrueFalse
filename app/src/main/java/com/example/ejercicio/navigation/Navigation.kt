@@ -21,12 +21,32 @@ fun Navegacion(innerPadding: PaddingValues) {
                 PantallaMenu(
                     innerPadding = innerPadding,
                     eventoJugar = { backStack.add(Juego) },
+                    eventoExamen = { backStack.add(Examen) },
+                    eventoSimple = { backStack.add(Simple) },
                     eventoEstadisticas = { backStack.add(Estadisticas) }
                 )
             }
             entry<Juego> {
                 PantallaPreguntas(
                     innerPadding = innerPadding,
+                    modoExamen = false,
+                    modoSimple = false,
+                    eventoVolver = { backStack.removeLastOrNull() }
+                )
+            }
+            entry<Examen> {
+                PantallaPreguntas(
+                    innerPadding = innerPadding,
+                    modoExamen = true,
+                    modoSimple = false,
+                    eventoVolver = { backStack.removeLastOrNull() }
+                )
+            }
+            entry<Simple> {
+                PantallaPreguntas(
+                    innerPadding = innerPadding,
+                    modoExamen = false,
+                    modoSimple = true,
                     eventoVolver = { backStack.removeLastOrNull() }
                 )
             }
