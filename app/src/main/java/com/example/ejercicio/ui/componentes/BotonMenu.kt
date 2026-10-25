@@ -16,7 +16,7 @@ fun BotonMenu(texto: String, eventoPadre: () -> Unit) {
         },
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = Dimens.paddingPantalla)
+            .padding(horizontal = Dimens.paddingPantalla, vertical = Dimens.espacioPequeno)
     ) {
         Text(texto)
     }

@@ -31,7 +31,7 @@ fun PantallaMenu(
             .fillMaxSize()
             .padding(innerPadding),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(Dimens.espacioPequeno, Alignment.CenterVertically)
+        verticalArrangement = Arrangement.Center
     ) {
         Text(
             text = stringResource(R.string.menu_titulo),

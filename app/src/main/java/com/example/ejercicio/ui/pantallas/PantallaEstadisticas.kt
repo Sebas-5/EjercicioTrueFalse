@@ -34,18 +34,18 @@ fun PantallaEstadisticas(innerPadding: PaddingValues) {
             .fillMaxSize()
             .padding(innerPadding),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(Dimens.espacioPequeno, Alignment.CenterVertically)
+        verticalArrangement = Arrangement.Center
     ) {
         Text(
             text = stringResource(R.string.estadisticas_titulo),
             fontSize = 28.sp,
             modifier = Modifier.padding(Dimens.paddingPantalla)
         )
-        Text(text = stringResource(R.string.estadisticas_aciertos, aciertos))
-        Text(text = stringResource(R.string.estadisticas_fallos, fallos))
-        Text(text = stringResource(R.string.estadisticas_porcentaje_aciertos, porcentajeAciertos))
-        Text(text = stringResource(R.string.estadisticas_porcentaje_fallos, porcentajeFallos))
-        Text(text = stringResource(R.string.estadisticas_clicks, clicks))
+        Text(text = stringResource(R.string.estadisticas_aciertos, aciertos), modifier = Modifier.padding(Dimens.espacioPequeno))
+        Text(text = stringResource(R.string.estadisticas_fallos, fallos), modifier = Modifier.padding(Dimens.espacioPequeno))
+        Text(text = stringResource(R.string.estadisticas_porcentaje_aciertos, porcentajeAciertos), modifier = Modifier.padding(Dimens.espacioPequeno))
+        Text(text = stringResource(R.string.estadisticas_porcentaje_fallos, porcentajeFallos), modifier = Modifier.padding(Dimens.espacioPequeno))
+        Text(text = stringResource(R.string.estadisticas_clicks, clicks), modifier = Modifier.padding(Dimens.espacioPequeno))
     }
 }
 
